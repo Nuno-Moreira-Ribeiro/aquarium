@@ -1,11 +1,18 @@
 import logo from "./logo.svg"
 import "./App.css"
-import { Field } from "./components/Field"
+import { FieldView } from "./components/FieldView"
 
 function App() {
   return (
     <div className="App">
-      <Field />
+      <header className="App-header">Aquarium</header>
+      <main>
+        <aside className="sidebar"></aside>
+        <div className="field-wrapper">
+          <FieldView />
+        </div>
+      </main>
+      <footer></footer>
     </div>
   )
 }

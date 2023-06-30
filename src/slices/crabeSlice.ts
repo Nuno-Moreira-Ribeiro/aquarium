@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { World } from "../types/world"
-import { Annotation } from "../types/annotation"
 import { ToolMessage } from "../types/message"
-import { convertArrayToObject, parseWorld } from "../helpers/parser";
-import { Command } from "../types/command"
+import { convertArrayToObject, parseWorld } from "../helpers/parser"
 import { CrabeState } from "../types/state"
 export const crabeSlice = createSlice({
   name: "crabe",
