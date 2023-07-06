@@ -33,13 +33,20 @@ export type Team = {
 }
 
 export type GameState = {
+  halted: string
+  stopping: string
+  running: string
+}
+
+export type GameData = {
   ally: Team
   enemy: Team
   positiveHalf: string
+  state: GameState
 }
 
 export type World = {
-  state: GameState
+  data: GameData
   geometry: Geometry
   alliesBot: Record<number, Robot<AllyInfo>>
   enemiesBot: Record<number, Robot<EnemyInfo>>
