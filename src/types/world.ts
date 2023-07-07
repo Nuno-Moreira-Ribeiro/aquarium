@@ -20,6 +20,7 @@ export type Robot<T> = {
   hasBall: boolean
   velocity: RobotVelocity
   robotInfo: T
+  timestamp: String
 }
 
 export enum TeamColor {
