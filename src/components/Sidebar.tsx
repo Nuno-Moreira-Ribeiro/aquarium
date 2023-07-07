@@ -37,9 +37,11 @@ export function Sidebar() {
           " , " +
           item.pose.position[1].toFixed(2) +
           "\n\tOrientation : " +
-          item.pose.orientation.toFixed(2)
-        // "\n\tVelocity linear : " +
-        // item.velocity.linear
+          item.pose.orientation.toFixed(2) +
+          "\n\tVelocity linear : " +
+          item.velocity.linear[0].toFixed(2) +
+          " , " +
+          item.velocity.linear[1].toFixed(2)
         // "\n\tVelocity angular : " +
         // item.velocity.angular +
         // "\n\tRobot information : " +
