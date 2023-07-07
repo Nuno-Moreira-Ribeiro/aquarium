@@ -23,6 +23,7 @@ export function Sidebar() {
   }
 
   function haveRobotState() {
+    console.log(world.alliesBot)
     const alliesBot = world.alliesBot
     let output: string = ""
     for (const key in alliesBot) {
@@ -30,6 +31,8 @@ export function Sidebar() {
       output += "Robot : " + item.id
       if (item) {
         output +=
+          "\nLast communication : " +
+          item.timestamp +
           "\n\tHas ball : " +
           item.hasBall +
           "\n\tPosition : " +
