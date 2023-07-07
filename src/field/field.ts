@@ -97,6 +97,20 @@ function drawRobotShape(
   context.fill()
   context.closePath()
 }
+function drawVelocity(
+  context: CanvasRenderingContext2D,
+  pos_x: number,
+  pos_y: number,
+  x: number,
+  y: number,
+) {
+  context.beginPath()
+  context.moveTo(pos_x, pos_y)
+  console.log(pos_x, x)
+  context.lineTo(pos_x + x * 100000, pos_y + y * 10000)
+  context.fill()
+  context.closePath()
+}
 
 function drawText(
   context: CanvasRenderingContext2D,
@@ -198,6 +212,15 @@ export function drawBot(
       ally.pose.orientation,
     )
     drawText(context, ally.pose.position[0], ally.pose.position[1], ally.id)
+    context.fillStyle = color === TeamColor.Blue ? "#000000" : "#00000"
+    drawVelocity(
+      context,
+      ally.pose.position[0],
+      ally.pose.position[1],
+      ally.velocity.linear[0],
+      ally.velocity.linear[1],
+    )
+    context.fillStyle = color === TeamColor.Blue ? "#249ed6" : "#dbd81d"
   }
 
   context.strokeStyle = "#fff"
