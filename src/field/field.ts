@@ -126,6 +126,11 @@ export function drawBall(context: CanvasRenderingContext2D, ball: Ball) {
   context.stroke()
   context.fill()
   context.closePath()
+  context.beginPath()
+  context.strokeStyle = "red"
+  context.arc(ball.position[0], ball.position[1], 0.5, 0, 2 * Math.PI)
+  context.stroke()
+  context.closePath()
   context.strokeStyle = "#fff"
 }
 
@@ -190,6 +195,19 @@ export function drawBot(
   }
 
   for (const ally of Object.values(allies)) {
+    context.fillStyle = "#666666"
+    drawRobotShape(
+      context,
+      ally.intendedPose.position[0],
+      ally.intendedPose.position[1],
+      ally.intendedPose.orientation,
+    )
+    drawText(
+      context,
+      ally.intendedPose.position[0],
+      ally.intendedPose.position[1],
+      ally.id,
+    )
     context.fillStyle = color === TeamColor.Blue ? "#249ed6" : "#dbd81d"
     drawRobotShape(
       context,

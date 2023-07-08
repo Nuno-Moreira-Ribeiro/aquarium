@@ -21,6 +21,7 @@ export type Robot<T> = {
   velocity: RobotVelocity
   robotInfo: T
   timestamp: String
+  intendedPose: Pose
 }
 
 export enum TeamColor {
