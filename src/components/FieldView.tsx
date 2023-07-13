@@ -1,11 +1,12 @@
 import { Ref, useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import { RootState } from "../app/store"
-import { drawBall, drawBot, drawField } from "../field/field"
+import { drawAnnotation, drawBall, drawBot, drawField } from "../field/field"
 import { Field } from "../types/geometry"
 
 export function FieldView() {
   const world = useSelector((state: RootState) => state.crabe.world)
+  const annotations = useSelector((state: RootState) => state.crabe.annotations)
 
   const canvasRef: Ref<HTMLCanvasElement> = useRef(null)
 
@@ -42,6 +43,17 @@ export function FieldView() {
     drawBot(context, world.alliesBot, world.enemiesBot, world.teamColor)
     if (world.ball !== null) drawBall(context, world.ball)
   }, [world])
+
+  useEffect(() => {
+    if (annotations == null) return
+    const canvas = canvasRef.current
+    if (canvas == null) return
+    const context = canvas.getContext("2d")
+    if (context == null) return
+    for (const key in annotations) {
+      drawAnnotation(context, annotations[key])
+    }
+  }, [annotations])
 
   return <canvas ref={canvasRef}></canvas>
 }
