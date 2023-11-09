@@ -13,13 +13,13 @@ export function FieldView() {
     console.log(field.width)
     console.log(field.length)
     const ratio = field.width / field.length
-    context.canvas.width = context.canvas.offsetWidth
-    context.canvas.height = context.canvas.offsetHeight
+    context.canvas.height = context.canvas.offsetWidth
+    context.canvas.width = context.canvas.offsetHeight
     clearCanvas(context)
 
     let x = context.canvas.width / field.length
     let y = context.canvas.height / field.width
-    let scale_factor = (x + y) / 2
+    let scale_factor = (x + y) /2.8
 
     context.translate(context.canvas.width / 2, context.canvas.height / 2)
     context.scale(scale_factor, -scale_factor)

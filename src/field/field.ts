@@ -38,7 +38,7 @@ export function drawField(
   geometry: Geometry,
   color: TeamColor,
 ) {
-  context.fillStyle = "#009933"
+  context.fillStyle = "#004718"
   context.fillRect(
     -geometry.field.length / 2 - geometry.boundaryWidth,
     -geometry.field.width / 2 - geometry.boundaryWidth,
@@ -120,8 +120,8 @@ function drawText(
 
 export function drawBall(context: CanvasRenderingContext2D, ball: Ball) {
   context.beginPath()
-  context.strokeStyle = "orange"
-  context.fillStyle = "orange"
+  context.strokeStyle = "#ff0000"
+  context.fillStyle = "#ff0000"
   context.arc(ball.position[0], ball.position[1], 0.02, 0, 2 * Math.PI)
   context.stroke()
   context.fill()
@@ -179,7 +179,7 @@ export function drawBot(
   color: TeamColor,
 ) {
   for (const enemy of Object.values(enemies)) {
-    context.fillStyle = color === TeamColor.Blue ? "#dbd81d" : "#249ed6"
+    context.fillStyle = color === TeamColor.Blue ? "#afb830" : "#18749e"
     drawRobotShape(
       context,
       enemy.pose.position[0],
@@ -190,7 +190,7 @@ export function drawBot(
   }
 
   for (const ally of Object.values(allies)) {
-    context.fillStyle = color === TeamColor.Blue ? "#249ed6" : "#dbd81d"
+    context.fillStyle = color === TeamColor.Blue ? "#18749e" : "#afb830"
     drawRobotShape(
       context,
       ally.pose.position[0],

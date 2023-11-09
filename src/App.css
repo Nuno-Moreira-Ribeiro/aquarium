@@ -14,10 +14,11 @@
 main {
   height: 100%;
   display: flex;
+  flex-direction: row-reverse;
 }
 
 .sidebar {
-  width: 20%;
+  width: 125vw;
   height: 100%;
   background-color: rgb(25,25,25);
 }
@@ -35,6 +36,7 @@ footer {
 .field-wrapper > canvas {
   height: 100%;
   width: 100%;
+  transform: rotate(90deg); 
 }
 
 .App-logo {
