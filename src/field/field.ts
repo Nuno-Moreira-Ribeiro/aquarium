@@ -33,12 +33,12 @@ function drawPenalty(context: CanvasRenderingContext2D, penalty: Penalty) {
   )
 }
 
-export function drawField(
+export function drawFieldHorizontal(
   context: CanvasRenderingContext2D,
   geometry: Geometry,
   color: TeamColor,
 ) {
-  context.fillStyle = "#004718"
+  context.fillStyle = "#4a9c40"
   context.fillRect(
     -geometry.field.length / 2 - geometry.boundaryWidth,
     -geometry.field.width / 2 - geometry.boundaryWidth,
