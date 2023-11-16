@@ -7,10 +7,10 @@ function App() {
     <div className="App">
       <header className="App-header">Aquarium</header>
       <main>
-        <aside className="sidebar"></aside>
         <div className="field-wrapper">
           <FieldView />
         </div>
+        <aside className="sidebar"></aside>
       </main>
       <footer></footer>
     </div>
