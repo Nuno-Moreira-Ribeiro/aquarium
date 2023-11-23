@@ -75,9 +75,9 @@ export function drawFieldHorizontal(
   context.closePath()
 
   // Goal
-  context.strokeStyle = color === TeamColor.Blue ? "#249ed6" : "#dbd81d"
+  context.strokeStyle = color === TeamColor.Blue ? "#19439e" : "#dbd81d"
   drawGoal(context, geometry.allyGoal)
-  context.strokeStyle = color === TeamColor.Blue ? "#dbd81d" : "#249ed6"
+  context.strokeStyle = color === TeamColor.Blue ? "#dbd81d" : "#19439e"
   drawGoal(context, geometry.enemyGoal)
 
   // Penalty
