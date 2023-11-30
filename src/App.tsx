@@ -8,15 +8,15 @@ function App() {
   return (
     <div className="App">
       <main>
+      <div className="container">
         <div className="Scoreboard">
           <Scoreboard />
         </div>
-        <div className="container">
           <div className="field-wrapper">
             <FieldView />
           </div>
+          </div>
           <aside className="sidebar"><Sidebar /></aside>
-        </div>
       </main>
     </div>
   )

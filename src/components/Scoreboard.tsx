@@ -1,10 +1,12 @@
 import { Ref, useEffect, useRef, useState } from "react"
-import logo_crabe from "../image.png"
+import "./Scoreboard.css";
+// import nameAlly from "../types/world"
 export function Scoreboard()
 {
     const scoreboardRef: Ref<HTMLDivElement> = useRef(null)
 
     scoreboardRef.current
 
-    return <div ref={scoreboardRef} className="logo"><img src={logo_crabe}/></div>
+    return (<div ref={scoreboardRef} className="containerScore"></div>
+    )
 }

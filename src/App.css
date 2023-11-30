@@ -14,18 +14,18 @@ body{
 main {
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .sidebar {
   width: 60%;
-  height: 95vh;
+  height: 100vh;
   background-color: #3b3f47;
 }
 
 .container{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .field-wrapper {
@@ -44,15 +44,6 @@ main {
 
 .Scoreboard{
   height: 5vh;
-  width: 100vw;
+  width: 80vw;
   background-color: #3b3f47;
-}
-img{
-  width: 3vw;
-  height: 3vw;
-}
-.logo{
-  width: 3vw;
-  display: flex;
-  align-items: flex-start;
 }
