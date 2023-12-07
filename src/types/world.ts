@@ -30,6 +30,7 @@ export enum TeamColor {
 export type Team = {
   color: string
   name: string
+  score: number
 }
 
 export type GameState = {

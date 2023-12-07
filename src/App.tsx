@@ -16,7 +16,9 @@ function App() {
             <FieldView />
           </div>
           </div>
-          <aside className="sidebar"><Sidebar /></aside>
+          <aside className="sidebar">
+            <Sidebar/>
+          </aside>
       </main>
     </div>
   )
