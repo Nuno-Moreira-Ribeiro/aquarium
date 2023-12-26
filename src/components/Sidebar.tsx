@@ -1,62 +1,120 @@
-import React, { useState } from "react";
-import Robot from './Robot';
-import './Sidebar.css';
+import React, { useEffect, useState } from "react"
+import Robot from "./Robot"
+import "./Sidebar.css"
+import { useSelector } from "react-redux"
+import { RootState } from "../app/store"
+import { GameState } from "../types/world"
 
 enum EdisplayMode {
   Robot,
   Stats,
-  CRAbE
+  CRAbE,
 }
 
-const robotData = [
-  { id: 1, angVelo: 0.5, linVelo: 2.0 },
-  { id: 2, angVelo: 0.8, linVelo: 1.5 },
-  { id: 3, angVelo: 0.8, linVelo: 1.5 },
-  { id: 4, angVelo: 0.8, linVelo: 1.5 },
-  { id: 5, angVelo: 0.8, linVelo: 1.5 },
-  { id: 6, angVelo: 0.8, linVelo: 1.5 },
-];
-
 export function Sidebar() {
-  const [displayMode, setDisplayMode] = useState(EdisplayMode.Robot);
+  let world = useSelector((state: RootState) => state.crabe.world)
+  const [displayMode, setDisplayMode] = useState(EdisplayMode.Robot)
 
-  function changeDisplayToRobot() {
-    setDisplayMode(EdisplayMode.Robot);
+  let [robotData, setRobotData] = useState<
+    {
+      linVeloX: number
+      angVelo: number
+      id: number
+      positionX: number
+      positionY: number
+      orientation: number
+      hasBall: boolean
+    }[]
+  >([])
+  function haveRobotState() {
+    const alliesBot = world.alliesBot
+    let robData: {
+      id: number
+      positionX: number
+      positionY: number
+      angVelo: number
+      linVeloX: number
+      linVeloY: number
+      orientation: number
+      hasBall: boolean
+    }[] = []
+    for (const key in alliesBot) {
+      const item = alliesBot[key]
+      const id = item.id
+      const positionX = item.pose.position[0]
+      const positionY = item.pose.position[1]
+      const orientation = item.pose.orientation
+      const angVelo = item.velocity.angular
+      const linVeloX = item.velocity.linear[0]
+      const linVeloY = item.velocity.linear[1]
+      const hasBall = item.hasBall
+      robData.push({
+        id,
+        positionX,
+        positionY,
+        angVelo,
+        linVeloX,
+        linVeloY,
+        orientation,
+        hasBall,
+      })
+    }
+    setRobotData(robData)
   }
 
-  function changeDisplayToStats() {
-    setDisplayMode(EdisplayMode.Stats);
+  const changeDisplayToRobot = () => {
+    setDisplayMode(EdisplayMode.Robot)
   }
 
-  function changeDisplayToCrabe() {
-    setDisplayMode(EdisplayMode.CRAbE);
+  const changeDisplayToStats = () => {
+    setDisplayMode(EdisplayMode.Stats)
   }
 
-  function display() {
+  const changeDisplayToCrabe = () => {
+    setDisplayMode(EdisplayMode.CRAbE)
+  }
+
+  function displayContent() {
     switch (displayMode) {
       case EdisplayMode.Robot:
         return (
-          <>
+          <div>
             {robotData.map((robot) => (
-              <Robot key={robot.id} id={robot.id} angVelo={robot.angVelo} linVelo={robot.linVelo} />
+              <Robot
+                key={robot.id}
+                id={robot.id}
+                positionX={robot.positionX}
+                positionY={robot.positionY}
+                angVelo={robot.angVelo}
+                linVeloX={robot.linVeloX}
+                linVeloY={robot.linVeloX}
+                orientation={robot.orientation}
+                hasBall={robot.hasBall}
+              />
             ))}
-          </>
-        );
+          </div>
+        )
       case EdisplayMode.Stats:
-        return;
+        return <div>Stats</div>
       case EdisplayMode.CRAbE:
-        return;
+        return <div>CRAbE</div>
       default:
-        return null;
+        return null
     }
   }
+  useEffect(() => {
+    if (world == null) return
+    haveRobotState()
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [world])
 
   return (
     <div>
       <button onClick={changeDisplayToRobot}>Robots</button>
       <button onClick={changeDisplayToStats}>Stats</button>
       <button onClick={changeDisplayToCrabe}>CRAbE</button>
-      {display()}
+      {displayContent()}
     </div>
-  );
+  )
 }
