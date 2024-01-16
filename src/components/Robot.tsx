@@ -38,7 +38,7 @@ const Robot: React.FC<RobotProps> = ({
         <p className="info orientation">
           Orientation : {orientation.toFixed(2)}
         </p>
-        <p className="info hasball">Possède la balle : {hasBall}</p>
+        <p className="info hasball">Has ball : {hasBall}</p>
       </div>
     </div>
   )
